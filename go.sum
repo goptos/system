@@ -1,0 +1,6 @@
+github.com/goptos/runtime v0.0.0 h1:QXA/N/s5R62ENGHpOmUzpwFdmU6suwlZ12pkfep3k1o=
+github.com/goptos/runtime v0.0.0/go.mod h1:rOBSRlJnVcigixxVubVx2zNWOmZ6m+m5skVYmVwtKfU=
+github.com/goptos/utils v0.0.0 h1:JLNUIp6PqLnmw0Tj5hTY4jXkRiv9qSGgLolhp5j/qRg=
+github.com/goptos/utils v0.0.0/go.mod h1:OkMb4LeW1wjYcxDw5HBkzt1H/2njzbtTRChD0FXwm3g=
+honnef.co/go/js/dom/v2 v2.0.0-20231112215516-51f43a291193 h1:qc3CbLs/1Tb3N7yIKKph/UbUoyI8YQfTF1apIvqX/I8=
+honnef.co/go/js/dom/v2 v2.0.0-20231112215516-51f43a291193/go.mod h1:+JtEcbinwR4znM12aluJ3WjKgvhDPKPQ8hnP4YM+4jI=
