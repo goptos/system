@@ -4,7 +4,7 @@ go 1.22.4
 
 require honnef.co/go/js/dom/v2 v2.0.0-20231112215516-51f43a291193
 
-require github.com/goptos/runtime v0.1.0
+require github.com/goptos/runtime v0.1.1
 
 // replace github.com/goptos/runtime => ../runtime
 
