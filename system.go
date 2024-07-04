@@ -4,6 +4,7 @@ package system
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/goptos/runtime"
 	"honnef.co/go/js/dom/v2"
@@ -29,6 +30,47 @@ func (self *Elem) On(event_name string, cb func(dom.Event)) *Elem {
 
 func (self *Elem) Attr(attr_name string, attr_value string) *Elem {
 	self.SetAttribute(attr_name, attr_value)
+	return self
+}
+
+func (self *Elem) DynAttr(cx *Scope, f func() bool, attr_name string, attr_value string) *Elem {
+	cx.CreateEffect(func() {
+		if f() {
+			// add value if it doesn't exist
+			if !self.HasAttribute(attr_name) {
+				self.SetAttribute(attr_name, attr_value)
+				return
+			}
+			var items = strings.Split(self.GetAttribute(attr_name), " ")
+			for _, item := range items {
+				if item == attr_value {
+					return
+				}
+			}
+			items = append(items, attr_value)
+			self.SetAttribute(attr_name, strings.Join(items, " "))
+		} else {
+			// remove value if exists
+			if !self.HasAttribute(attr_name) {
+				return
+			}
+			var items = strings.Split(self.GetAttribute(attr_name), " ")
+			var newItems = []string{}
+			for _, item := range items {
+				if item != attr_value {
+					newItems = append(newItems, item)
+				}
+			}
+			if len(items) == len(newItems) {
+				return
+			}
+			if len(newItems) < 1 {
+				self.RemoveAttribute(attr_name)
+				return
+			}
+			self.SetAttribute(attr_name, strings.Join(newItems, " "))
+		}
+	})
 	return self
 }
 
